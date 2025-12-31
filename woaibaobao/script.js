@@ -204,7 +204,7 @@ function switchScreen(from, to) {
 }
 
 function startTimer() {
-    const startDate = new Date('2025-12-31'); // 默认在一起的时间
+    const startDate = new Date('2025-12-31');
     setInterval(() => {
         const now = new Date();
         const diff = now - startDate;
