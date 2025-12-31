@@ -1,4 +1,3 @@
-// 核心变量
 let scene, camera, renderer, starField, heartGroup;
 const storyTexts = [
     "宝宝，你知道吗？",
@@ -13,7 +12,6 @@ const storyTexts = [
 let currentStoryIndex = 0;
 let isAnimating = false;
 
-// 3D 初始化
 function init3D() {
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -23,9 +21,8 @@ function init3D() {
 
     camera.position.z = 50;
 
-    // 星空背景
     const starGeometry = new THREE.BufferGeometry();
-    const starCount = 3000;
+    const starCount = 3650;
     const starPositions = new Float32Array(starCount * 3);
     for (let i = 0; i < starCount * 3; i++) {
         starPositions[i] = (Math.random() - 0.5) * 200;
@@ -35,7 +32,6 @@ function init3D() {
     starField = new THREE.Points(starGeometry, starMaterial);
     scene.add(starField);
 
-    // 爱心组
     heartGroup = new THREE.Group();
     scene.add(heartGroup);
 
@@ -65,7 +61,6 @@ function animate() {
     renderer.render(scene, camera);
 }
 
-// 逐字动画显示
 function showStoryText(text) {
     if (isAnimating) return;
     isAnimating = true;
@@ -73,7 +68,6 @@ function showStoryText(text) {
     const container = document.getElementById('story-content');
     container.innerHTML = '';
     
-    // 将文本拆分为字符
     const chars = text.split('').map(char => {
         const span = document.createElement('span');
         span.textContent = char === ' ' ? '\u00A0' : char;
@@ -82,7 +76,6 @@ function showStoryText(text) {
         return span;
     });
 
-    // 使用 GSAP 制作逐字浮现动画
     gsap.to(chars, {
         opacity: 1,
         y: 0,
@@ -93,16 +86,14 @@ function showStoryText(text) {
         ease: "back.out(1.7)",
         onComplete: () => {
             isAnimating = false;
-            // 更新进度条
             const progress = ((currentStoryIndex + 1) / storyTexts.length) * 100;
             document.getElementById('progress-bar').style.width = `${progress}%`;
         }
     });
 }
 
-// 鼠标跟随粒子
 document.addEventListener('mousemove', (e) => {
-    if (Math.random() > 0.1) return; // 降低频率
+    if (Math.random() > 0.1) return; 
     const p = document.createElement('div');
     p.className = 'particle';
     p.innerHTML = '❤️';
@@ -121,7 +112,6 @@ document.addEventListener('mousemove', (e) => {
     });
 });
 
-// 流程控制
 const startBtn = document.getElementById('start-btn');
 const bgMusic = document.getElementById('bg-music');
 
@@ -141,7 +131,6 @@ document.getElementById('story-screen').addEventListener('click', () => {
     }
 });
 
-// 长按仪式逻辑
 const holdBtn = document.getElementById('hold-btn');
 const holdProgress = holdBtn.querySelector('.hold-progress');
 let holdTimer;
