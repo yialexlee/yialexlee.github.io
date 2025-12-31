@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>致我最亲爱的宝宝</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+</head>
+<body>
+    <!-- 3D 背景 -->
+    <div id="canvas-container"></div>
+    
+    <!-- 鼠标粒子容器 -->
+    <div id="cursor-particles"></div>
+
+    <!-- 音乐控制 -->
+    <div id="music-control" class="music-player">
+        <div class="music-icon">🎵</div>
+        <audio id="bg-music" loop>
+            <source src="bgm.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div id="content">
+        <!-- 阶段 1: 欢迎语 -->
+        <div id="intro-screen" class="screen active">
+            <div class="glass-card main-card">
+                <div class="heart-icon-3d">❤️</div>
+                <h1 class="split-text">嘿，宝宝</h1>
+                <p class="fade-in-text">有些话，想亲口对你说...</p>
+                <button id="start-btn" class="glow-btn">让我康康</button>
+            </div>
+        </div>
+
+        <!-- 阶段 2: 情感叙述 (极致优化版) -->
+        <div id="story-screen" class="screen">
+            <div class="story-wrapper">
+                <div id="story-content" class="story-content"></div>
+                <div class="progress-container">
+                    <div id="progress-bar" class="progress-bar"></div>
+                </div>
+                <div id="click-hint" class="click-hint">点击屏幕，继续阅读...</div>
+            </div>
+        </div>
+
+        <!-- 阶段 3: 仪式感环节 (长按解锁) -->
+        <div id="ritual-screen" class="screen">
+            <div class="ritual-card">
+                <h3>请按下你的印记，解锁我的爱心</h3>
+                <div id="hold-btn" class="hold-btn">
+                    <div class="hold-progress"></div>
+                    <span class="fingerprint">❤️</span>
+                </div>
+                <p>长按 2 秒开启</p>
+            </div>
+        </div>
+
+        <!-- 阶段 4: 正式表白 -->
+        <div id="confession-screen" class="screen">
+            <div class="confession-card">
+                <div class="confession-text">
+                    <h2 class="reveal-text">虽然我们已经在一起了</h2>
+                    <h2 class="reveal-text delay-1">但是我还是想正式和郑重的询问你...</h2>
+                    <div class="big-love">宝宝，我爱你❤️</div>
+                    <p class="question">你愿意当我的女朋友吗？</p>
+                </div>
+                <div class="btn-group">
+                    <button id="yes-btn" class="choice-btn yes">我愿意！❤️</button>
+                    <button id="no-btn" class="choice-btn no">不愿意</button>
+                </div>
+                <div id="no-hint" class="no-hint"></div>
+            </div>
+        </div>
+
+        <!-- 阶段 5: 成功庆典 -->
+        <div id="success-screen" class="screen">
+            <div class="success-card">
+                <h1 class="title-pop">让我们一直相爱🌹</h1>
+                <div class="heart-beat-3d">❤️</div>
+                <div class="message-scroll">
+                </div>
+                <div class="timer-box">
+                    我们已经相爱了 <br>
+                    <span id="days">0</span> 天 <span id="hours">0</span> 小时 <span id="minutes">0</span> 分 <span id="seconds">0</span> 秒
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

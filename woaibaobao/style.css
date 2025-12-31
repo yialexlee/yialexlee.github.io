@@ -1,0 +1,250 @@
+:root {
+    --primary: #ff4d6d;
+    --secondary: #ff758c;
+    --accent: #ff8e8e;
+    --glass: rgba(255, 255, 255, 0.08);
+    --border: rgba(255, 255, 255, 0.15);
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'STHeiti', 'Microsoft YaHei', sans-serif;
+    background: #050505;
+    color: #fff;
+}
+
+#canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+}
+
+.screen {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 700px;
+    opacity: 0;
+    pointer-events: auto;
+}
+
+.screen.active {
+    display: flex;
+    opacity: 1;
+}
+
+/* 极致卡片样式 */
+.glass-card, .ritual-card, .confession-card, .success-card {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: 40px;
+    padding: 4rem;
+    text-align: center;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* 按钮特效 */
+.glow-btn, .choice-btn {
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    border: none;
+    padding: 18px 50px;
+    border-radius: 100px;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 20px rgba(255, 77, 109, 0.3);
+    margin-top: 2rem;
+}
+
+.glow-btn:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 20px 40px rgba(255, 77, 109, 0.5);
+}
+
+/* 故事文字动画 */
+.story-wrapper {
+    width: 100%;
+    cursor: pointer;
+}
+
+.story-content {
+    font-size: 2.2rem;
+    line-height: 1.6;
+    min-height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px) scale(0.5);
+    filter: blur(10px);
+}
+
+.progress-container {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    margin-top: 3rem;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: var(--primary);
+    transition: width 0.5s ease;
+}
+
+.click-hint {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.4);
+    animation: float 2s infinite ease-in-out;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* 长按仪式 */
+.hold-btn {
+    width: 120px;
+    height: 120px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid var(--border);
+    border-radius: 50%;
+    margin: 2rem auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.hold-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background: var(--primary);
+    opacity: 0.3;
+    transition: height 0.1s linear;
+}
+
+.fingerprint {
+    font-size: 3rem;
+    z-index: 2;
+}
+
+/* 表白卡片 */
+.big-love {
+    font-size: 3.5rem;
+    color: var(--primary);
+    font-weight: bold;
+    margin: 2rem 0;
+    text-shadow: 0 0 30px rgba(255, 77, 109, 0.4);
+}
+
+.btn-group {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.choice-btn.no {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+}
+
+.no-hint {
+    margin-top: 1.5rem;
+    color: var(--secondary);
+    font-size: 0.9rem;
+    height: 20px;
+}
+
+/* 成功卡片 */
+.heart-beat-3d {
+    font-size: 6rem;
+    margin: 2rem 0;
+    animation: heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    15% { transform: scale(1.3); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.15); }
+    60% { transform: scale(1); }
+}
+
+.timer-box {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    font-size: 1.1rem;
+    line-height: 2;
+}
+
+#days, #hours, #minutes, #seconds {
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+/* 鼠标粒子 */
+.particle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    font-size: 12px;
+}
+
+/* 音乐控制 */
+.music-player {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    z-index: 1000;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    background: var(--glass);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--border);
+}
