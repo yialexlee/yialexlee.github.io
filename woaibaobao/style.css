@@ -53,7 +53,6 @@ body, html {
     opacity: 1;
 }
 
-/* 极致卡片样式 */
 .glass-card, .ritual-card, .confession-card, .success-card {
     background: var(--glass);
     backdrop-filter: blur(20px);
@@ -65,7 +64,6 @@ body, html {
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
-/* 按钮特效 */
 .glow-btn, .choice-btn {
     background: linear-gradient(45deg, var(--primary), var(--secondary));
     border: none;
@@ -84,7 +82,6 @@ body, html {
     box-shadow: 0 20px 40px rgba(255, 77, 109, 0.5);
 }
 
-/* 故事文字动画 */
 .story-wrapper {
     width: 100%;
     cursor: pointer;
@@ -135,7 +132,6 @@ body, html {
     50% { transform: translateY(-10px); }
 }
 
-/* 长按仪式 */
 .hold-btn {
     width: 120px;
     height: 120px;
@@ -167,7 +163,6 @@ body, html {
     z-index: 2;
 }
 
-/* 表白卡片 */
 .big-love {
     font-size: 3.5rem;
     color: var(--primary);
@@ -194,7 +189,6 @@ body, html {
     height: 20px;
 }
 
-/* 成功卡片 */
 .heart-beat-3d {
     font-size: 6rem;
     margin: 2rem 0;
@@ -224,7 +218,6 @@ body, html {
     font-size: 1.4rem;
 }
 
-/* 鼠标粒子 */
 .particle {
     position: fixed;
     pointer-events: none;
@@ -232,7 +225,6 @@ body, html {
     font-size: 12px;
 }
 
-/* 音乐控制 */
 .music-player {
     position: fixed;
     top: 30px;
