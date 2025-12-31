@@ -252,7 +252,7 @@ window.addEventListener('resize', () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
-// 全屏控制函数
+
 function launchFullScreen(element) {
     if (element.requestFullscreen) {
         element.requestFullscreen();
@@ -265,12 +265,8 @@ function launchFullScreen(element) {
     }
 }
 
-// 修改原有的 start-btn 点击事件
 document.getElementById('start-btn').addEventListener('click', () => {
-    // 触发全屏（作用于整个文档根元素）
     launchFullScreen(document.documentElement);
-    
-    // 原有的逻辑
     bgMusic.play().catch(() => {});
     switchScreen('intro-screen', 'story-screen');
     showStoryText(storyTexts[currentStoryIndex]);
